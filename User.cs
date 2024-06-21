@@ -1,8 +1,12 @@
 namespace Spotivy;
 
-public class User
+public class User(
+    string name,
+    List<Playlist> playlists,
+    List<User> friends)
 {
-    public List<Song> CurrentPlayList { get; set; }
-    public List<Playlist> Playlists { get; set; }
-    public List<User> Friends { get; set; }
+    public string Name { get; } = name;
+    public List<Song> CurrentPlayList { get; } = new();
+    public List<Playlist> Playlists { get; } = playlists;
+    public List<User> Friends { get; } = friends;
 }
