@@ -6,11 +6,18 @@ public class SpotivyClient(List<Song> songs, List<Album> albums, List<User> user
     List<Album> albums = albums;
     List<User> users = users;
 
+    Song? selectedSong;
 
-    IPlayable? selectedPlayable;
-
-    public void SelectPlayable(IPlayable playable)
+    public void SelectSongBasedOnTitle(string name)
     {
-        selectedPlayable = playable;
+        var foundSong = songs.Find(song => song.Title == name);
+        if (foundSong == null)
+        {
+            Console.WriteLine($"Song with title '{name}' not found.");
+            return;
+        }
+
+        selectedSong = foundSong;
+        Console.WriteLine($"Selected song: {selectedSong.Title}");
     }
 }

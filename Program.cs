@@ -13,4 +13,4 @@ List<User> users = new();
 
 var client = new SpotivyClient(songs, albums, users);
 
-client.SelectPlayable(songs[0]);
+client.SelectSongBasedOnTitle("Echoes of the Night");
