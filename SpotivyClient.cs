@@ -6,7 +6,9 @@ public class SpotivyClient(List<Song> songs, List<Album> albums, List<User> user
     List<Album> albums = albums;
     List<User> users = users;
 
-    Song? selectedSong;
+    // todo make song playable
+    private Song? selectedSong;
+    private User? selectedUser;
 
     public void SelectSongBasedOnTitle(string name)
     {
@@ -19,5 +21,18 @@ public class SpotivyClient(List<Song> songs, List<Album> albums, List<User> user
 
         selectedSong = foundSong;
         Console.WriteLine($"Selected song: {selectedSong.Title}");
+    }
+
+    public void SelectUserBasedOnName(string name)
+    {
+        var foundUser = users.Find(user => user.Name == name);
+        if (foundUser == null)
+        {
+            Console.WriteLine($"User with name '{name}' not found.");
+            return;
+        }
+
+        selectedUser = foundUser;
+        Console.WriteLine($"Selected user: {selectedUser.Name}");
     }
 }
