@@ -1,6 +1,6 @@
 namespace Spotivy;
 
-public class Album
+public class Album : SongCollection
 {
-    
+
 }
