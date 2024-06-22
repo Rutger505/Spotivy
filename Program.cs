@@ -11,13 +11,13 @@ List<Song> songs =
 List<Album> albums = new();
 List<User> users =
 [
-    new User("Robert", new List<Playlist>(), new List<User>()),
-    new User("Rutger", new List<Playlist>(), new List<User>()),
-    new User("Sergio", new List<Playlist>(), new List<User>()),
+    new User("Robert", [], []),
+    new User("Rutger", [], []),
+    new User("Sergio", [], []),
 ];
 
 var client = new SpotivyClient(songs, albums, users);
 
-client.SelectSongBasedOnTitle("Echoes of the Night");
+client.SelectSong("Echoes of the Night");
 
-client.SelectUserBasedOnName("Rutger");
+client.SelectUser("Rutger");
