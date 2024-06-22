@@ -27,4 +27,4 @@ client.SelectUser("Rutger");
 
 client.SelectAlbum("Jasper Valley");
 
-client.Play();
+client.ViewDetails();
