@@ -6,7 +6,7 @@ public class SpotivyClient(List<Song> songs, List<Album> albums, List<User> user
     List<Album> albums = albums;
     List<User> users = users;
 
-    private IPlayable? selectedSong;
+    private IPlayable? selectedPlayable;
     private User? selectedUser;
 
     public void SelectSong(string title)
@@ -18,7 +18,7 @@ public class SpotivyClient(List<Song> songs, List<Album> albums, List<User> user
             return;
         }
 
-        selectedSong = foundSong;
+        selectedPlayable = foundSong;
         Console.WriteLine($"Selected song: {foundSong.Title}");
     }
 
@@ -33,5 +33,28 @@ public class SpotivyClient(List<Song> songs, List<Album> albums, List<User> user
 
         selectedUser = foundUser;
         Console.WriteLine($"Selected user: {selectedUser.Name}");
+    }
+
+    public void Play()
+    {
+        if (selectedPlayable == null)
+        {
+            Console.WriteLine("No song selected.");
+            return;
+        }
+
+        if (selectedPlayable is Song song)
+        {
+            PlaySong(song);
+        }
+        else
+        {
+            throw new NotImplementedException("Playable type not implemented.");
+        }
+    }
+
+    private void PlaySong(Song song)
+    {
+        Console.WriteLine($"Playing song: {song.Title}");
     }
 }
