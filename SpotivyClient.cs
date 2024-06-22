@@ -77,4 +77,24 @@ public class SpotivyClient(List<Song> songs, List<Album> albums, List<User> user
     {
         Console.WriteLine($"Paused song: {song.Title}");
     }
+
+    public void Resume()
+    {
+        switch (selectedPlayable)
+        {
+            case null:
+                Console.WriteLine("No playable selected.");
+                break;
+            case Song song:
+                ResumeSong(song);
+                break;
+            default:
+                throw new NotImplementedException("Playable type not implemented.");
+        }
+    }
+
+    private void ResumeSong(Song song)
+    {
+        Console.WriteLine($"Resumed song: {song.Title}");
+    }
 }
