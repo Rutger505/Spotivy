@@ -37,19 +37,16 @@ public class SpotivyClient(List<Song> songs, List<Album> albums, List<User> user
 
     public void Play()
     {
-        if (selectedPlayable == null)
+        switch (selectedPlayable)
         {
-            Console.WriteLine("No song selected.");
-            return;
-        }
-
-        if (selectedPlayable is Song song)
-        {
-            PlaySong(song);
-        }
-        else
-        {
-            throw new NotImplementedException("Playable type not implemented.");
+            case null:
+                Console.WriteLine("No playable selected.");
+                return;
+            case Song song:
+                PlaySong(song);
+                break;
+            default:
+                throw new NotImplementedException("Playable type not implemented.");
         }
     }
 
