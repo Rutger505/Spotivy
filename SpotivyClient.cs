@@ -97,4 +97,24 @@ public class SpotivyClient(List<Song> songs, List<Album> albums, List<User> user
     {
         Console.WriteLine($"Resumed song: {song.Title}");
     }
+
+    public void Skip()
+    {
+        switch (selectedPlayable)
+        {
+            case null:
+                Console.WriteLine("No playable selected.");
+                break;
+            case Song song:
+                SkipSong(song);
+                break;
+            default:
+                throw new NotImplementedException("Playable type not implemented.");
+        }
+    }
+
+    private void SkipSong(Song song)
+    {
+        Console.WriteLine($"Skipped song: {song.Title}");
+    }
 }
