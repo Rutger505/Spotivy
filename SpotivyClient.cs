@@ -130,4 +130,31 @@ public class SpotivyClient(List<Song> songs, List<Album> albums, List<User> user
     {
         Console.WriteLine($"Skipped song: {song.Title}");
     }
+
+    public void ViewDetails()
+    {
+        switch (selectedPlayable)
+        {
+            case null:
+                Console.WriteLine("No playable selected.");
+                break;
+            case Album album:
+                ViewAlbumDetails(album);
+                break;
+            default:
+                throw new NotImplementedException("Playable type not implemented.");
+        }
+    }
+
+    private void ViewAlbumDetails(Album album)
+    {
+        Console.WriteLine($"Album: {album.Title}");
+        Console.WriteLine($"Artist: {album.Creator}");
+        Console.WriteLine($"Genre: {album.Genre}");
+        Console.WriteLine("Songs:");
+        foreach (var song in album.Songs)
+        {
+            Console.WriteLine($"- {song.Title}");
+        }
+    }
 }
