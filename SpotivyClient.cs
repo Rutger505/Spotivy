@@ -22,6 +22,19 @@ public class SpotivyClient(List<Song> songs, List<Album> albums, List<User> user
         Console.WriteLine($"Selected song: {foundSong.Title}");
     }
 
+    public void SelectAlbum(string title)
+    {
+        var foundAlbum = albums.Find(album => album.Title == title);
+        if (foundAlbum == null)
+        {
+            Console.WriteLine($"Album with title '{title}' not found.");
+            return;
+        }
+
+        selectedPlayable = foundAlbum;
+        Console.WriteLine($"Selected album: {foundAlbum.Title}");
+    }
+
     public void SelectUser(string name)
     {
         var foundUser = users.Find(user => user.Name == name);
