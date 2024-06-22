@@ -18,6 +18,6 @@ List<User> users =
 
 var client = new SpotivyClient(songs, albums, users);
 
-client.SelectSongBasedOnTitle("Echoes of the Night");
+client.SelectSong("Echoes of the Night");
 
-client.SelectUserBasedOnName("Rutger");
+client.SelectUser("Rutger");
