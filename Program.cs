@@ -17,14 +17,20 @@ List<Album> albums =
 List<User> users =
 [
     new User("Robert", [], []),
-    new User("Rutger", [], []),
+    new User("Rutger", [
+        new Playlist("Favorites", "Rutger", [
+            songs[0],
+            songs[1],
+            songs[2]
+        ]),
+    ], []),
     new User("Sergio", [], []),
 ];
 
-var client = new SpotivyClient(songs, albums, users);
+var client = new SpotivyClient(songs, albums, users, users[1]);
 
 client.SelectUser("Rutger");
 
-client.SelectAlbum("Jasper Valley");
+client.SelectPlaylist("Favorites");
 
-client.Play();
+client.ViewDetails();
