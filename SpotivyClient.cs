@@ -128,11 +128,16 @@ public class SpotivyClient(
         if (endOfQueue && !Repeat)
         {
             Console.WriteLine("End of queue.");
-            return;
         }
-
-        currentSongIndex = 0;
-        playingQueue[currentSongIndex].Play();
+        else if (endOfQueue && Repeat)
+        {
+            currentSongIndex = 0;
+            playingQueue[currentSongIndex].Play();
+        }
+        else if (!endOfQueue)
+        {
+            playingQueue[currentSongIndex].Play();
+        }
     }
 
     public void ViewDetails()
