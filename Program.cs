@@ -29,35 +29,15 @@ List<User> users =
 
 var client = new SpotivyClient(songs, albums, users, users[1]);
 
-client.SelectPlaylist("Favorites");
+client.CreatePlaylist("Chill Vibes");
+
+client.SelectSong("Echoes of the Night");
+
+client.AddToPlaylist("Chill Vibes");
+
+
+client.SelectPlaylist("Chill Vibes");
 
 client.Play();
 
 client.Skip();
-client.Skip();
-client.Skip();
-
-Console.WriteLine("Should be end of queue");
-
-client.Shuffle = true;
-
-client.Play();
-
-client.Skip();
-client.Skip();
-client.Skip();
-
-Console.WriteLine("Should be end of queue and shuffled");
-
-client.Repeat = true;
-
-client.Play();
-
-client.Skip();
-client.Skip();
-client.Skip();
-client.Skip();
-client.Skip();
-client.Skip();
-
-Console.WriteLine("Should be repeated and shuffled");
