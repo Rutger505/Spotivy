@@ -13,21 +13,21 @@ public class Song(string title, string creator, string genre) : IPlayable
 
     public void Pause()
     {
-        throw new NotImplementedException();
+        Console.WriteLine($"Paused {Title} by {Creator}");
     }
 
     public void Resume()
     {
-        throw new NotImplementedException();
+        Console.WriteLine($"Resumed {Title} by {Creator}");
     }
 
     public void Skip()
     {
-        throw new NotImplementedException();
+        Console.WriteLine($"Skipped {Title} by {Creator}");
     }
 
     public void Repeat(bool state)
     {
-        throw new NotImplementedException();
+        Console.WriteLine($"Repeat is now {(state ? "on" : "off")}");
     }
 }
