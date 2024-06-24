@@ -31,7 +31,7 @@ var client = new SpotivyClient(songs, albums, users, users[1]);
 
 client.CreatePlaylist("Chill Vibes");
 
-client.SelectSong("Echoes of the Night");
+client.SelectAlbum("Jasper Valley");
 
 client.AddToPlaylist("Chill Vibes");
 
@@ -40,4 +40,6 @@ client.SelectPlaylist("Chill Vibes");
 
 client.Play();
 
+client.Skip();
+client.Skip();
 client.Skip();

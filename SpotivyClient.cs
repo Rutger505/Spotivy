@@ -198,6 +198,11 @@ public class SpotivyClient(
                 Console.WriteLine(
                     $"Added song '{song.Title}' to playlist '{foundPlaylist.Title}'.");
                 break;
+            case SongCollection songCollection:
+                foundPlaylist.Songs.AddRange(songCollection.Songs);
+                Console.WriteLine(
+                    $"Added {songCollection.Title} to playlist {foundPlaylist.Title}.");
+                break;
             default:
                 throw new NotImplementedException("Playable type not implemented.");
         }
