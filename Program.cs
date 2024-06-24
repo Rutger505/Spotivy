@@ -30,3 +30,11 @@ List<User> users =
 var client = new SpotivyClient(songs, albums, users, users[1]);
 
 client.ViewUsers();
+
+client.SelectUser("Robert");
+
+client.RemoveUserAsFriend();
+
+client.AddUserAsFriend();
+
+client.RemoveUserAsFriend();
