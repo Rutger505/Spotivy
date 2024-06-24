@@ -38,8 +38,10 @@ client.AddToPlaylist("Chill Vibes");
 
 client.SelectPlaylist("Chill Vibes");
 
-client.Play();
+client.ViewDetails();
 
-client.Skip();
-client.Skip();
-client.Skip();
+Console.WriteLine("Adding Chill vibes to Chill Vibes");
+
+client.AddToPlaylist("Chill Vibes");
+
+client.ViewDetails();
