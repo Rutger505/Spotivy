@@ -35,13 +35,14 @@ client.SelectAlbum("Jasper Valley");
 
 client.AddToPlaylist("Chill Vibes");
 
-
-client.SelectPlaylist("Chill Vibes");
-
 client.ViewDetails();
 
-Console.WriteLine("Adding Chill vibes to Chill Vibes");
+Console.WriteLine("Removing Echoes of the Night from Chill Vibes playlist...");
 
-client.AddToPlaylist("Chill Vibes");
+client.SelectSong("Echoes of the Night");
+
+client.RemoveSelectedSongFromPlaylist("Chill Vibes");
+
+client.SelectPlaylist("Chill Vibes");
 
 client.ViewDetails();
