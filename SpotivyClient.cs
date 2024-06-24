@@ -175,6 +175,34 @@ public class SpotivyClient(
         Console.WriteLine($"Created playlist: {newPlaylist.Title}");
     }
 
+    public void AddToPlaylist(string playlistTitle)
+    {
+        if (selectedPlayable == null)
+        {
+            Console.WriteLine("No song selected.");
+            return;
+        }
+
+        var foundPlaylist =
+            loggedInUser.Playlists.Find(playlist => playlist.Title == playlistTitle);
+        if (foundPlaylist == null)
+        {
+            Console.WriteLine($"Playlist with title '{playlistTitle}' not found.");
+            return;
+        }
+
+        switch (selectedPlayable)
+        {
+            case Song song:
+                foundPlaylist.Songs.Add(song);
+                Console.WriteLine(
+                    $"Added song '{song.Title}' to playlist '{foundPlaylist.Title}'.");
+                break;
+            default:
+                throw new NotImplementedException("Playable type not implemented.");
+        }
+    }
+
     public void ViewDetails()
     {
         switch (selectedPlayable)
