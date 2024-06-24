@@ -83,6 +83,19 @@ public class SpotivyClient(
                 currentSongIndex = 0;
                 song.Play();
                 break;
+            case Album album:
+                if (album.Songs.Count == 0)
+                {
+                    Console.WriteLine("Album has no songs.");
+                    return;
+                }
+
+                playingQueue = album.Songs;
+                currentSongIndex = 0;
+
+                playingQueue[currentSongIndex].Play();
+
+                break;
             default:
                 throw new NotImplementedException("Playable type not implemented.");
         }
