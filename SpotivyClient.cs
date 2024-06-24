@@ -83,6 +83,19 @@ public class SpotivyClient(
                 currentSongIndex = 0;
                 song.Play();
                 break;
+            case SongCollection songCollection:
+                if (songCollection.Songs.Count == 0)
+                {
+                    Console.WriteLine("No songs in song collection.");
+                    return;
+                }
+
+                playingQueue = songCollection.Songs;
+                currentSongIndex = 0;
+
+                playingQueue[currentSongIndex].Play();
+
+                break;
             default:
                 throw new NotImplementedException("Playable type not implemented.");
         }
@@ -128,11 +141,16 @@ public class SpotivyClient(
         if (endOfQueue && !Repeat)
         {
             Console.WriteLine("End of queue.");
-            return;
         }
-
-        currentSongIndex = 0;
-        playingQueue[currentSongIndex].Play();
+        else if (endOfQueue && Repeat)
+        {
+            currentSongIndex = 0;
+            playingQueue[currentSongIndex].Play();
+        }
+        else if (!endOfQueue)
+        {
+            playingQueue[currentSongIndex].Play();
+        }
     }
 
     public void ViewDetails()

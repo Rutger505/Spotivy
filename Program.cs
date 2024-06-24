@@ -10,9 +10,9 @@ List<Song> songs =
 ];
 List<Album> albums =
 [
-    new Album("Jasper Valley", "Luna Nova", "Pop", songs.GetRange(0, 2)),
-    new Album("Galactic Odyssey", "Stellar Dreams", "Electronic", songs.GetRange(1, 2)),
-    new Album("Nature's Symphony", "Nature's Voice", "Ambient", songs.GetRange(2, 2)),
+    new Album("Jasper Valley", "Luna Nova", "Pop", [songs[0], songs[3], songs[4]]),
+    new Album("Galactic Odyssey", "Stellar Dreams", "Electronic", [songs[1], songs[2]]),
+    new Album("Nature's Symphony", "Nature's Voice", "Ambient", [songs[2]]),
 ];
 List<User> users =
 [
@@ -29,13 +29,21 @@ List<User> users =
 
 var client = new SpotivyClient(songs, albums, users, users[1]);
 
-client.SelectSong("Echoes of the Night");
+client.SelectPlaylist("Favorites");
 
-client.Pause();
-client.Resume();
 client.Play();
-client.Pause();
+
 client.Skip();
-client.Play();
+client.Skip();
+client.Skip();
+
+Console.WriteLine("Should be end of queue");
+
 client.Repeat = true;
+client.Play();
+
 client.Skip();
+client.Skip();
+client.Skip();
+
+Console.WriteLine("Repeat is on, should be back to start");
