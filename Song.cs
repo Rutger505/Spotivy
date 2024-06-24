@@ -25,9 +25,4 @@ public class Song(string title, string creator, string genre) : IPlayable
     {
         Console.WriteLine($"Skipped {Title} by {Creator}");
     }
-
-    public void Repeat(bool state)
-    {
-        Console.WriteLine($"Repeat is now {(state ? "on" : "off")}");
-    }
 }
