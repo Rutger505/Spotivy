@@ -40,8 +40,10 @@ client.SelectPlaylist("Chill Vibes");
 
 client.ViewDetails();
 
-Console.WriteLine("Adding Chill vibes to Chill Vibes");
+Console.WriteLine("Removing Echoes of the Night from Chill Vibes playlist...");
 
-client.AddToPlaylist("Chill Vibes");
+client.SelectPlaylist("Chill Vibes");
+
+client.RemoveSongFromSelectedPlaylist("Echoes of the Night");
 
 client.ViewDetails();

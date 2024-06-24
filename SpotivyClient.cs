@@ -208,6 +208,27 @@ public class SpotivyClient(
         }
     }
 
+    public void RemoveSongFromSelectedPlaylist(string songTitle)
+    {
+        if (selectedPlayable is not Playlist)
+        {
+            Console.WriteLine("No playlist selected.");
+            return;
+        }
+
+        var selectedPlaylist = (Playlist)selectedPlayable;
+
+        var songToRemove = selectedPlaylist.Songs.Find(song => song.Title == songTitle);
+        if (songToRemove == null)
+        {
+            Console.WriteLine($"Song with title '{songTitle}' not found in playlist.");
+            return;
+        }
+
+        selectedPlaylist.Songs.Remove(songToRemove);
+        Console.WriteLine($"Removed song '{songToRemove.Title}' from playlist.");
+    }
+
     public void ViewDetails()
     {
         switch (selectedPlayable)
