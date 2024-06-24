@@ -300,4 +300,22 @@ public class SpotivyClient(
         loggedInUser.Friends.Add(selectedUser);
         Console.WriteLine($"Added {selectedUser.Name} as friend.");
     }
+
+    public void RemoveUserAsFriend()
+    {
+        if (selectedUser == null)
+        {
+            Console.WriteLine("No user selected.");
+            return;
+        }
+
+        if (!loggedInUser.Friends.Contains(selectedUser))
+        {
+            Console.WriteLine($"{selectedUser.Name} is not a friend.");
+            return;
+        }
+
+        loggedInUser.Friends.Remove(selectedUser);
+        Console.WriteLine($"Removed {selectedUser.Name} as friend.");
+    }
 }
