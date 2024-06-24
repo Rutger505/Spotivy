@@ -59,19 +59,6 @@ public class SpotivyClient(
         Console.WriteLine($"Selected playlist: {foundPlaylist.Title}");
     }
 
-    public void SelectUser(string name)
-    {
-        var foundUser = users.Find(user => user.Name == name);
-        if (foundUser == null)
-        {
-            Console.WriteLine($"User with name '{name}' not found.");
-            return;
-        }
-
-        selectedUser = foundUser;
-        Console.WriteLine($"Selected user: {selectedUser.Name}");
-    }
-
     public void Play()
     {
         switch (selectedPlayable)
@@ -287,5 +274,30 @@ public class SpotivyClient(
         {
             Console.WriteLine($"- {user.Name}");
         }
+    }
+
+    public void SelectUser(string name)
+    {
+        var foundUser = users.Find(user => user.Name == name);
+        if (foundUser == null)
+        {
+            Console.WriteLine($"User with name '{name}' not found.");
+            return;
+        }
+
+        selectedUser = foundUser;
+        Console.WriteLine($"Selected user: {selectedUser.Name}");
+    }
+
+    public void AddUserAsFriend()
+    {
+        if (selectedUser == null)
+        {
+            Console.WriteLine("No user selected.");
+            return;
+        }
+
+        loggedInUser.Friends.Add(selectedUser);
+        Console.WriteLine($"Added {selectedUser.Name} as friend.");
     }
 }
