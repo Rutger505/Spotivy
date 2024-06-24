@@ -168,6 +168,13 @@ public class SpotivyClient(
         }
     }
 
+    public void CreatePlaylist(string title)
+    {
+        var newPlaylist = new Playlist(title, loggedInUser.Name, []);
+        loggedInUser.Playlists.Add(newPlaylist);
+        Console.WriteLine($"Created playlist: {newPlaylist.Title}");
+    }
+
     public void ViewDetails()
     {
         switch (selectedPlayable)
