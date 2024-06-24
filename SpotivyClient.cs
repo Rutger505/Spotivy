@@ -159,6 +159,9 @@ public class SpotivyClient(
             case Playlist playlist:
                 ViewPlaylistDetails(playlist);
                 break;
+            case Song song:
+                ViewSongDetails(song);
+                break;
             default:
                 throw new NotImplementedException("Playable type not implemented.");
         }
@@ -185,5 +188,12 @@ public class SpotivyClient(
         {
             Console.WriteLine($"- {song.Title}");
         }
+    }
+
+    private void ViewSongDetails(Song song)
+    {
+        Console.WriteLine($"Song: {song.Title}");
+        Console.WriteLine($"Artist: {song.Creator}");
+        Console.WriteLine($"Genre: {song.Genre}");
     }
 }
