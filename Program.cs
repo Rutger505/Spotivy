@@ -29,8 +29,13 @@ List<User> users =
 
 var client = new SpotivyClient(songs, albums, users, users[1]);
 
-client.SelectUser("Rutger");
+client.SelectSong("Echoes of the Night");
 
-client.SelectPlaylist("Favorites");
-
-client.ViewDetails();
+client.Pause();
+client.Resume();
+client.Play();
+client.Pause();
+client.Skip();
+client.Play();
+client.Repeat = true;
+client.Skip();
