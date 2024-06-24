@@ -11,8 +11,13 @@ public class SpotivyClient(
     private List<User> users = users;
     private User loggedInUser = loggedInUser;
 
+    private List<Song> playingQueue = new();
+    private int currentSongIndex = 0;
+
     private IPlayable? selectedPlayable;
     private User? selectedUser;
+
+    public bool Repeat { get; set; } = false;
 
     public void SelectSong(string title)
     {
@@ -74,76 +79,60 @@ public class SpotivyClient(
                 Console.WriteLine("No playable selected.");
                 return;
             case Song song:
-                PlaySong(song);
+                playingQueue = [song];
+                currentSongIndex = 0;
+                song.Play();
                 break;
             default:
                 throw new NotImplementedException("Playable type not implemented.");
         }
-    }
-
-    private void PlaySong(Song song)
-    {
-        Console.WriteLine($"Playing song: {song.Title}");
     }
 
     public void Pause()
     {
-        switch (selectedPlayable)
+        if (playingQueue.Count == 0)
         {
-            case null:
-                Console.WriteLine("No playable selected.");
-                break;
-            case Song song:
-                PauseSong(song);
-                break;
-            default:
-                throw new NotImplementedException("Playable type not implemented.");
+            Console.WriteLine("No song in queue.");
+            return;
         }
-    }
 
-    private void PauseSong(Song song)
-    {
-        Console.WriteLine($"Paused song: {song.Title}");
+        Song playingSong = playingQueue[currentSongIndex];
+        playingSong.Pause();
     }
 
     public void Resume()
     {
-        switch (selectedPlayable)
+        if (playingQueue.Count == 0)
         {
-            case null:
-                Console.WriteLine("No playable selected.");
-                break;
-            case Song song:
-                ResumeSong(song);
-                break;
-            default:
-                throw new NotImplementedException("Playable type not implemented.");
+            Console.WriteLine("No song queue.");
+            return;
         }
-    }
 
-    private void ResumeSong(Song song)
-    {
-        Console.WriteLine($"Resumed song: {song.Title}");
+        Song playingSong = playingQueue[currentSongIndex];
+        playingSong.Resume();
     }
 
     public void Skip()
     {
-        switch (selectedPlayable)
+        if (playingQueue.Count == 0)
         {
-            case null:
-                Console.WriteLine("No playable selected.");
-                break;
-            case Song song:
-                SkipSong(song);
-                break;
-            default:
-                throw new NotImplementedException("Playable type not implemented.");
+            Console.WriteLine("No song playing.");
+            return;
         }
-    }
 
-    private void SkipSong(Song song)
-    {
-        Console.WriteLine($"Skipped song: {song.Title}");
+        Song playingSong = playingQueue[currentSongIndex];
+        playingSong.Skip();
+        currentSongIndex++;
+
+        bool endOfQueue = currentSongIndex >= playingQueue.Count;
+        if (endOfQueue && !Repeat)
+        {
+            Console.WriteLine("End of queue.");
+            return;
+        }
+
+        currentSongIndex = 0;
+        playingQueue[currentSongIndex].Play();
     }
 
     public void ViewDetails()
