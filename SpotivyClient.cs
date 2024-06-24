@@ -74,16 +74,11 @@ public class SpotivyClient(
                 Console.WriteLine("No playable selected.");
                 return;
             case Song song:
-                PlaySong(song);
+                song.Play();
                 break;
             default:
                 throw new NotImplementedException("Playable type not implemented.");
         }
-    }
-
-    private void PlaySong(Song song)
-    {
-        Console.WriteLine($"Playing song: {song.Title}");
     }
 
     public void Pause()
@@ -94,17 +89,13 @@ public class SpotivyClient(
                 Console.WriteLine("No playable selected.");
                 break;
             case Song song:
-                PauseSong(song);
+                song.Pause();
                 break;
             default:
                 throw new NotImplementedException("Playable type not implemented.");
         }
     }
 
-    private void PauseSong(Song song)
-    {
-        Console.WriteLine($"Paused song: {song.Title}");
-    }
 
     public void Resume()
     {
@@ -114,17 +105,13 @@ public class SpotivyClient(
                 Console.WriteLine("No playable selected.");
                 break;
             case Song song:
-                ResumeSong(song);
+                song.Resume();
                 break;
             default:
                 throw new NotImplementedException("Playable type not implemented.");
         }
     }
 
-    private void ResumeSong(Song song)
-    {
-        Console.WriteLine($"Resumed song: {song.Title}");
-    }
 
     public void Skip()
     {
@@ -134,16 +121,11 @@ public class SpotivyClient(
                 Console.WriteLine("No playable selected.");
                 break;
             case Song song:
-                SkipSong(song);
+                song.Skip();
                 break;
             default:
                 throw new NotImplementedException("Playable type not implemented.");
         }
-    }
-
-    private void SkipSong(Song song)
-    {
-        Console.WriteLine($"Skipped song: {song.Title}");
     }
 
     public void ViewDetails()
