@@ -29,7 +29,7 @@ List<User> users =
 
 var client = new SpotivyClient(songs, albums, users, users[1]);
 
-client.SelectAlbum("Jasper Valley");
+client.SelectPlaylist("Favorites");
 
 client.Play();
 
