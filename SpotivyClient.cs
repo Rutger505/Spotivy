@@ -208,27 +208,25 @@ public class SpotivyClient(
         }
     }
 
-    public void RemoveSelectedSongFromPlaylist(string playlistTitle)
+    public void RemoveSongFromSelectedPlaylist(string songTitle)
     {
-        if (selectedPlayable is not Song)
+        if (selectedPlayable is not Playlist)
         {
-            Console.WriteLine("No song selected.");
+            Console.WriteLine("No playlist selected.");
             return;
         }
 
-        var song = (Song)selectedPlayable;
+        var selectedPlaylist = (Playlist)selectedPlayable;
 
-        var foundPlaylist =
-            loggedInUser.Playlists.Find(playlist => playlist.Title == playlistTitle);
-        if (foundPlaylist == null)
+        var songToRemove = selectedPlaylist.Songs.Find(song => song.Title == songTitle);
+        if (songToRemove == null)
         {
-            Console.WriteLine($"Playlist with title '{playlistTitle}' not found.");
+            Console.WriteLine($"Song with title '{songTitle}' not found in playlist.");
             return;
         }
 
-        foundPlaylist.Songs.Remove(song);
-        Console.WriteLine(
-            $"Removed song '{song.Title}' from playlist '{foundPlaylist.Title}'.");
+        selectedPlaylist.Songs.Remove(songToRemove);
+        Console.WriteLine($"Removed song '{songToRemove.Title}' from playlist.");
     }
 
     public void ViewDetails()
