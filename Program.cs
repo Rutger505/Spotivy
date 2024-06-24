@@ -39,11 +39,25 @@ client.Skip();
 
 Console.WriteLine("Should be end of queue");
 
-client.Repeat = true;
+client.Shuffle = true;
+
 client.Play();
 
 client.Skip();
 client.Skip();
 client.Skip();
 
-Console.WriteLine("Repeat is on, should be back to start");
+Console.WriteLine("Should be end of queue and shuffled");
+
+client.Repeat = true;
+
+client.Play();
+
+client.Skip();
+client.Skip();
+client.Skip();
+client.Skip();
+client.Skip();
+client.Skip();
+
+Console.WriteLine("Should be repeated and shuffled");

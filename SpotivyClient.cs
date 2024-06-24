@@ -18,6 +18,7 @@ public class SpotivyClient(
     private User? selectedUser;
 
     public bool Repeat { get; set; } = false;
+    public bool Shuffle { get; set; } = false;
 
     public void SelectSong(string title)
     {
@@ -90,7 +91,15 @@ public class SpotivyClient(
                     return;
                 }
 
-                playingQueue = songCollection.Songs;
+                if (Shuffle)
+                {
+                    playingQueue = songCollection.Songs.OrderBy(song => Guid.NewGuid()).ToList();
+                }
+                else
+                {
+                    playingQueue = songCollection.Songs;
+                }
+
                 currentSongIndex = 0;
 
                 playingQueue[currentSongIndex].Play();
@@ -142,7 +151,13 @@ public class SpotivyClient(
         {
             Console.WriteLine("End of queue.");
         }
-        else if (endOfQueue && Repeat)
+        else if (endOfQueue && Repeat && Shuffle)
+        {
+            playingQueue = playingQueue.OrderBy(song => Guid.NewGuid()).ToList();
+            currentSongIndex = 0;
+            playingQueue[currentSongIndex].Play();
+        }
+        else if (endOfQueue && Repeat && !Shuffle)
         {
             currentSongIndex = 0;
             playingQueue[currentSongIndex].Play();
