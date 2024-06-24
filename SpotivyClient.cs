@@ -83,14 +83,14 @@ public class SpotivyClient(
                 currentSongIndex = 0;
                 song.Play();
                 break;
-            case Album album:
-                if (album.Songs.Count == 0)
+            case SongCollection songCollection:
+                if (songCollection.Songs.Count == 0)
                 {
-                    Console.WriteLine("Album has no songs.");
+                    Console.WriteLine("No songs in song collection.");
                     return;
                 }
 
-                playingQueue = album.Songs;
+                playingQueue = songCollection.Songs;
                 currentSongIndex = 0;
 
                 playingQueue[currentSongIndex].Play();
