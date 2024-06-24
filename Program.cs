@@ -9,8 +9,15 @@ List<Song> songs =
     new Song("Serenade in Blue", "Jazz Masters", "Jazz")
 ];
 List<Album> albums = new();
-List<User> users = new();
+List<User> users =
+[
+    new User("Robert", [], []),
+    new User("Rutger", [], []),
+    new User("Sergio", [], []),
+];
 
 var client = new SpotivyClient(songs, albums, users);
 
-client.SelectSongBasedOnTitle("Echoes of the Night");
+client.SelectSong("Echoes of the Night");
+
+client.SelectUser("Rutger");
