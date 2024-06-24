@@ -279,4 +279,13 @@ public class SpotivyClient(
         Console.WriteLine($"Artist: {song.Creator}");
         Console.WriteLine($"Genre: {song.Genre}");
     }
+
+    public void ViewUsers()
+    {
+        Console.WriteLine("Users:");
+        foreach (var user in users)
+        {
+            Console.WriteLine($"- {user.Name}");
+        }
+    }
 }
