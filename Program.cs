@@ -31,13 +31,17 @@ var client = new SpotivyClient(songs, albums, users, users[1]);
 
 client.CreatePlaylist("Chill Vibes");
 
-client.SelectSong("Echoes of the Night");
+client.SelectAlbum("Jasper Valley");
 
 client.AddToPlaylist("Chill Vibes");
 
 
 client.SelectPlaylist("Chill Vibes");
 
-client.Play();
+client.ViewDetails();
 
-client.Skip();
+Console.WriteLine("Adding Chill vibes to Chill Vibes");
+
+client.AddToPlaylist("Chill Vibes");
+
+client.ViewDetails();
