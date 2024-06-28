@@ -205,21 +205,7 @@ public class SpotivyClient(
             return;
         }
 
-        switch (selectedPlayable)
-        {
-            case Song song:
-                foundPlaylist.Songs.Add(song);
-                Console.WriteLine(
-                    $"Added song '{song.Title}' to playlist '{foundPlaylist.Title}'.");
-                break;
-            case SongCollection songCollection:
-                foundPlaylist.Songs.AddRange(songCollection.Songs);
-                Console.WriteLine(
-                    $"Added {songCollection.Title} to playlist {foundPlaylist.Title}.");
-                break;
-            default:
-                throw new NotImplementedException("Playable type not implemented.");
-        }
+        foundPlaylist.Add(selectedPlayable);
     }
 
     public void RemoveSongFromSelectedPlaylist(string songTitle)
@@ -232,15 +218,7 @@ public class SpotivyClient(
 
         var selectedPlaylist = (Playlist)selectedPlayable;
 
-        var songToRemove = selectedPlaylist.Songs.Find(song => song.Title == songTitle);
-        if (songToRemove == null)
-        {
-            Console.WriteLine($"Song with title '{songTitle}' not found in playlist.");
-            return;
-        }
-
-        selectedPlaylist.Songs.Remove(songToRemove);
-        Console.WriteLine($"Removed song '{songToRemove.Title}' from playlist.");
+        selectedPlaylist.RemoveSong(songTitle);
     }
 
     public void ViewDetails()
