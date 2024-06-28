@@ -17,11 +17,12 @@ List<Album> albums =
 List<User> users =
 [
     new User("Robèrt", [
-        new Playlist("Meaty metal", "Robert", [
+        new Playlist("Meaty metal", "Robèrt", [
             songs[2],
             songs[3]
         ]),
     ], []),
+    new User("Robèrt", [], []),
     new User("Rutger", [
         new Playlist("Favorites", "Rutger", [
             songs[0],
