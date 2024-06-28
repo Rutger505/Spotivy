@@ -1,33 +1,28 @@
 namespace Spotivy;
 
-public class Song : IPlayable
+public class Song(string title, string creator, string genre) : IPlayable
 {
-    public string Title { get; }
-    public string Creator { get; }
-    public string Genre { get; }
+    public string Title { get; } = title;
+    public string Creator { get; } = creator;
+    public string Genre { get; } = genre;
 
     public void Play()
     {
-        throw new NotImplementedException();
+        Console.WriteLine($"Playing {Title} by {Creator}");
     }
 
     public void Pause()
     {
-        throw new NotImplementedException();
+        Console.WriteLine($"Paused {Title} by {Creator}");
     }
 
     public void Resume()
     {
-        throw new NotImplementedException();
+        Console.WriteLine($"Resumed {Title} by {Creator}");
     }
 
     public void Skip()
     {
-        throw new NotImplementedException();
-    }
-
-    public void Repeat(bool state)
-    {
-        throw new NotImplementedException();
+        Console.WriteLine($"Skipped {Title} by {Creator}");
     }
 }
