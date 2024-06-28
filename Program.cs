@@ -16,12 +16,13 @@ List<Album> albums =
 ];
 List<User> users =
 [
-    new User("Robert", [
-        new Playlist("Meaty metal", "Robert", [
+    new User("Robèrt", [
+        new Playlist("Meaty metal", "Robèrt", [
             songs[2],
             songs[3]
         ]),
     ], []),
+    new User("Robèrt", [], []),
     new User("Rutger", [
         new Playlist("Favorites", "Rutger", [
             songs[0],
@@ -35,6 +36,8 @@ List<User> users =
 var client = new SpotivyClient(songs, albums, users, users[1]);
 
 client.SelectSong("Echoes of the Night");
+
+client.SelectUser("Robèrt");
 
 client.AddToPlaylist("Favorites");
 
