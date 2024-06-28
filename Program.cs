@@ -37,4 +37,4 @@ client.RemoveUserAsFriend();
 
 client.AddUserAsFriend();
 
-client.RemoveUserAsFriend();
+client.ViewFriends();
