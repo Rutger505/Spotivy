@@ -327,4 +327,19 @@ public class SpotivyClient(
             Console.WriteLine($"- {friend.Name}");
         }
     }
+
+    public void ViewFriendPlaylists()
+    {
+        if (selectedUser == null)
+        {
+            Console.WriteLine("No user selected.");
+            return;
+        }
+
+        Console.WriteLine($"Playlists of {selectedUser.Name}:");
+        foreach (var playlist in selectedUser.Playlists)
+        {
+            Console.WriteLine($"- {playlist.Title}");
+        }
+    }
 }
