@@ -16,8 +16,8 @@ List<Album> albums =
 ];
 List<User> users =
 [
-    new User("Robert", [
-        new Playlist("Meaty metal", "Robert", [
+    new User("Robèrt", [
+        new Playlist("Meaty metal", "Robèrt", [
             songs[2],
             songs[3]
         ]),
