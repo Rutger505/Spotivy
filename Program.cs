@@ -16,6 +16,12 @@ List<Album> albums =
 ];
 List<User> users =
 [
+    new User("Robert", [
+        new Playlist("Meaty metal", "Robert", [
+            songs[2],
+            songs[3]
+        ]),
+    ], []),
     new User("Robèrt", [], []),
     new User("Rutger", [
         new Playlist("Favorites", "Rutger", [
@@ -38,3 +44,9 @@ client.RemoveUserAsFriend();
 client.AddUserAsFriend();
 
 client.ViewFriends();
+
+client.ViewFriendPlaylists();
+
+client.SelectFriendPlaylist("Meaty metal");
+
+client.Play();

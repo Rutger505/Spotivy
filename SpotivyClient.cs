@@ -20,6 +20,33 @@ public class SpotivyClient(
     public bool Repeat { get; set; } = false;
     public bool Shuffle { get; set; } = false;
 
+    public void ViewSongs()
+    {
+        Console.WriteLine("Songs:");
+        foreach (var song in songs)
+        {
+            Console.WriteLine($"- {song.Title}");
+        }
+    }
+
+    public void ViewAlbums()
+    {
+        Console.WriteLine("Albums:");
+        foreach (var album in albums)
+        {
+            Console.WriteLine($"- {album.Title}");
+        }
+    }
+
+    public void ViewPlaylists()
+    {
+        Console.WriteLine("Playlists:");
+        foreach (var playlist in loggedInUser.Playlists)
+        {
+            Console.WriteLine($"- {playlist.Title}");
+        }
+    }
+
     public void SelectSong(string title)
     {
         var foundSong = songs.Find(song => song.Title == title);
@@ -326,5 +353,39 @@ public class SpotivyClient(
         {
             Console.WriteLine($"- {friend.Name}");
         }
+    }
+
+    public void ViewFriendPlaylists()
+    {
+        if (selectedUser == null)
+        {
+            Console.WriteLine("No user selected.");
+            return;
+        }
+
+        Console.WriteLine($"Playlists of {selectedUser.Name}:");
+        foreach (var playlist in selectedUser.Playlists)
+        {
+            Console.WriteLine($"- {playlist.Title}");
+        }
+    }
+
+    public void SelectFriendPlaylist(string title)
+    {
+        if (selectedUser == null)
+        {
+            Console.WriteLine("No user selected.");
+            return;
+        }
+
+        var foundPlaylist = selectedUser.Playlists.Find(playlist => playlist.Title == title);
+        if (foundPlaylist == null)
+        {
+            Console.WriteLine($"Playlist with title '{title}' not found.");
+            return;
+        }
+
+        selectedPlayable = foundPlaylist;
+        Console.WriteLine($"Selected playlist: {foundPlaylist.Title}");
     }
 }
