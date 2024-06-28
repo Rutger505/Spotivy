@@ -35,18 +35,16 @@ List<User> users =
 
 var client = new SpotivyClient(songs, albums, users, users[1]);
 
-client.ViewUsers();
+client.SelectSong("Echoes of the Night");
 
 client.SelectUser("Robèrt");
 
-client.RemoveUserAsFriend();
+client.AddToPlaylist("Favorites");
 
-client.AddUserAsFriend();
+client.SelectPlaylist("Favorites");
 
-client.ViewFriends();
+client.ViewDetails();
 
-client.ViewFriendPlaylists();
-
-client.SelectFriendPlaylist("Meaty metal");
-
-client.Play();
+client.RemoveSongFromSelectedPlaylist("Echoes of the Night");
+client.RemoveSongFromSelectedPlaylist("Whispers of the Wind");
+client.RemoveSongFromSelectedPlaylist("Rhythm of the Heart");
