@@ -318,4 +318,13 @@ public class SpotivyClient(
         loggedInUser.Friends.Remove(selectedUser);
         Console.WriteLine($"Removed {selectedUser.Name} as friend.");
     }
+
+    public void ViewFriends()
+    {
+        Console.WriteLine("Friends:");
+        foreach (var friend in loggedInUser.Friends)
+        {
+            Console.WriteLine($"- {friend.Name}");
+        }
+    }
 }
