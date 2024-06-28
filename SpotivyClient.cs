@@ -342,4 +342,23 @@ public class SpotivyClient(
             Console.WriteLine($"- {playlist.Title}");
         }
     }
+
+    public void SelectFriendPlaylist(string title)
+    {
+        if (selectedUser == null)
+        {
+            Console.WriteLine("No user selected.");
+            return;
+        }
+
+        var foundPlaylist = selectedUser.Playlists.Find(playlist => playlist.Title == title);
+        if (foundPlaylist == null)
+        {
+            Console.WriteLine($"Playlist with title '{title}' not found.");
+            return;
+        }
+
+        selectedPlayable = foundPlaylist;
+        Console.WriteLine($"Selected playlist: {foundPlaylist.Title}");
+    }
 }
