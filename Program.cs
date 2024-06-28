@@ -45,3 +45,7 @@ client.AddUserAsFriend();
 client.ViewFriends();
 
 client.ViewFriendPlaylists();
+
+client.SelectFriendPlaylist("Meaty metal");
+
+client.Play();
