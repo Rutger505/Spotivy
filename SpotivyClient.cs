@@ -20,6 +20,33 @@ public class SpotivyClient(
     public bool Repeat { get; set; } = false;
     public bool Shuffle { get; set; } = false;
 
+    public void ViewSongs()
+    {
+        Console.WriteLine("Songs:");
+        foreach (var song in songs)
+        {
+            Console.WriteLine($"- {song.Title}");
+        }
+    }
+
+    public void ViewAlbums()
+    {
+        Console.WriteLine("Albums:");
+        foreach (var album in albums)
+        {
+            Console.WriteLine($"- {album.Title}");
+        }
+    }
+
+    public void ViewPlaylists()
+    {
+        Console.WriteLine("Playlists:");
+        foreach (var playlist in loggedInUser.Playlists)
+        {
+            Console.WriteLine($"- {playlist.Title}");
+        }
+    }
+
     public void SelectSong(string title)
     {
         var foundSong = songs.Find(song => song.Title == title);
